@@ -10,4 +10,5 @@ import lombok.Setter;
 @Setter
 public class User extends UserDetails {
 
+
 }

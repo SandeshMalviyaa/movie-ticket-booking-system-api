@@ -2,6 +2,7 @@ package com.example.mtb.service.impl;
 
 import com.example.mtb.entity.User;
 import com.example.mtb.entity.UserDetails;
+import com.example.mtb.exceptions.UserExistByEmailException;
 import com.example.mtb.repository.UserRepository;
 import com.example.mtb.service.UserService;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,10 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails addUser(UserDetails userDetails) {
-        return userRepository.save(userDetails);
+    public UserDetails addUser(UserDetails user) {
+        if(userRepository.existsEmail(user.getEmail()))
+            throw new UserExistByEmailException("User with the Email is already exists");
+
+        return userRepository.save(user);
     }
 }

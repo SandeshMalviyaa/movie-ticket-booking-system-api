@@ -15,6 +15,7 @@ import java.util.Date;
 public class UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String userId;
     private String userName;
     private String email;

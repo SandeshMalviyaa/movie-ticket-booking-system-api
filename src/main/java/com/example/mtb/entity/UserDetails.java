@@ -28,7 +28,6 @@ public class UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private LocalDate dateOfBirth;
-    private boolean isDelete;
 
     @CreatedDate
     private Instant createdAt;

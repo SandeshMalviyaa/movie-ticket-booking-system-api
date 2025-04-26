@@ -6,6 +6,4 @@ import jakarta.persistence.Enumerated;
 
 public enum UserRole {
    USER , THEATER_OWNER;
-
-
 }

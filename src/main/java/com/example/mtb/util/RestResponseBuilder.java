@@ -15,5 +15,11 @@ public class RestResponseBuilder {
                 .data(data)
                 .build());
     }
+    public ResponseEntity<ErrorStructure> error(HttpStatus statusCode, String message){
+        return ResponseEntity.status(statusCode).body(ErrorStructure.builder()
+                        .errorCode(statusCode.value())
+                .errorMessage(message)
+                .build());
+    }
 
 }

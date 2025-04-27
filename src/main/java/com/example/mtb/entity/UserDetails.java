@@ -35,7 +35,6 @@ public class UserDetails {
     @LastModifiedDate
     private Instant updatedAt;
 
-    boolean isDeleted;
+    private boolean isDeleted;
     private Instant deletedAt;
-
 }

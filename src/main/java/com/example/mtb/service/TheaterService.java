@@ -5,4 +5,5 @@ import com.example.mtb.dto.TheaterResponse;
 
 public interface TheaterService {
     TheaterResponse addTheater(String email, TheaterRequest theaterRegisterationRequest);
+    TheaterResponse findtheater(String theaterId);
 }

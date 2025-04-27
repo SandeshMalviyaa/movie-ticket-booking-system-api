@@ -28,4 +28,10 @@ public class TheaterController {
         TheaterResponse theaterResponse = theaterService.findtheater(theaterId);
         return responseBuilder.sucess(HttpStatus.OK , "Theater has been succesfull fetched",theaterResponse);
     }
+
+    @PutMapping("/theaters/{theaterId}")
+    public ResponseEntity<ResponseStructure<TheaterResponse>> updateTheater(@PathVariable String theaterId, @Valid @RequestBody TheaterRequest registerationRequest){
+        TheaterResponse theaterResponse = theaterService.updateTheater(theaterId, registerationRequest);
+        return responseBuilder.sucess(HttpStatus.OK, "Theater has been sucessfully Updated", theaterResponse);
+    }
 }

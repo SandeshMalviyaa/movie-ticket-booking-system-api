@@ -11,19 +11,20 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @AllArgsConstructor
+@Validated
 public class UserController {
 
     private final UserService userService;
     private final RestResponseBuilder responseBuilder;
 
     @PostMapping("/register")
-    @Valid
-    public ResponseEntity<ResponseStructure<UserResponse >> addUser(@RequestBody UserRegistrationRequest user) {
+    public ResponseEntity<ResponseStructure<UserResponse >> addUser(@Valid @RequestBody UserRegistrationRequest user) {
         UserResponse userDetails  = userService.addUser(user);
 
         return responseBuilder.sucess(HttpStatus.OK,"User Object Created Successfully",  userDetails) ;

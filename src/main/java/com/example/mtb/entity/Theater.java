@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -26,7 +27,11 @@ public class Theater {
     private String landmark;
 
     @ManyToOne
+
     private TheaterOwner theaterOwner;
+
+    @OneToMany(mappedBy = "theater")
+    private List<Screen> screen;
 
     @CreatedDate
     private Instant createdAt;

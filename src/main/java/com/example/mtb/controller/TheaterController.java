@@ -19,7 +19,7 @@ public class TheaterController {
     private final RestResponseBuilder responseBuilder;
 
     @PostMapping("/theaters")
-    @PreAuthorize("hashAuthority('THEATER_OWNER')")
+    @PreAuthorize("hasAuthority('THEATER_OWNER')")
     public ResponseEntity<ResponseStructure<TheaterResponse>> addTheater(String email ,@Valid @RequestBody TheaterRequest theaterRegisterationRequest) {
         TheaterResponse theaterResponse = theaterService.addTheater(email, theaterRegisterationRequest);
         return responseBuilder.sucess(HttpStatus.OK , "Theater has been succesfull created",theaterResponse);
@@ -32,7 +32,7 @@ public class TheaterController {
     }
 
     @PutMapping("/theaters/{theaterId}")
-    @PreAuthorize("hashAuthority('THEATER_OWNER')")
+    @PreAuthorize("hasAuthority('THEATER_OWNER')")
     public ResponseEntity<ResponseStructure<TheaterResponse>> updateTheater(@PathVariable String theaterId, @Valid @RequestBody TheaterRequest registerationRequest){
         TheaterResponse theaterResponse = theaterService.updateTheater(theaterId, registerationRequest);
         return responseBuilder.sucess(HttpStatus.OK, "Theater has been sucessfully Updated", theaterResponse);

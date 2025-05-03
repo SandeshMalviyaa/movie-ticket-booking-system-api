@@ -4,6 +4,8 @@ import com.example.mtb.dto.ScreenRequest;
 import com.example.mtb.dto.ScreenResponse;
 import com.example.mtb.entity.*;
 import com.example.mtb.exceptions.NoOfRowsExceedCapacityException;
+import com.example.mtb.exceptions.ScreenNotFoundByIdException;
+import com.example.mtb.exceptions.TheaterNotFoundByIdException;
 import com.example.mtb.mapper.ScreenMapper;
 import com.example.mtb.repository.ScreenRepository;
 import com.example.mtb.repository.SeatRepository;
@@ -32,8 +34,20 @@ public class ScreenServiceImpl implements ScreenService {
             Screen screen = copy(screenRequest, new Screen(), theater);
             return screenMapper.screenResponseMapper(screen);
         }
-        return null;
+        throw new TheaterNotFoundByIdException("No Theater found by ID");
     }
+
+    @Override
+    public ScreenResponse findScreen(String theaterId, String screenId) {
+        if (theaterRepository.existsById(theaterId)) {
+            if (screenRepository.existsById(screenId)) {
+                return screenMapper.screenResponseMapper(screenRepository.findById(screenId).get());
+            }
+            throw new ScreenNotFoundByIdException("Screen Not Found by Id");
+        }
+        throw new TheaterNotFoundByIdException("Theater not found by Id");
+    }
+
 
     private Screen copy(ScreenRequest screenRequest, Screen screen, Theater theater) {
         screen.setScreenType(screenRequest.screenType());

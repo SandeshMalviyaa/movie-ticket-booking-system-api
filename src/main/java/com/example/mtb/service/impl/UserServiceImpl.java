@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse softDeleteUser(String email) {
         if (userRepository.existsByEmail(email)) {
             UserDetails user = userRepository.findByEmail(email);
-            user.setDeleted(true);
+            user.setDelete(true);
             user.setDeletedAt(Instant.now());
             userRepository.save(user);
             return userMapper.userDetailsResponseMapper(user);

@@ -2,7 +2,6 @@ package com.example.mtb.controller;
 
 import com.example.mtb.dto.ScreenRequest;
 import com.example.mtb.dto.ScreenResponse;
-import com.example.mtb.dto.TheaterResponse;
 import com.example.mtb.service.ScreenService;
 import com.example.mtb.util.ResponseStructure;
 import com.example.mtb.util.RestResponseBuilder;

@@ -24,9 +24,10 @@ public class ScreenController {
         ScreenResponse screenResponse = screenService.addScreen(screenRequest, theaterId);
         return responseBuilder.sucess(HttpStatus.OK, "Screen has been successfully created", screenResponse);
     }
+
     @GetMapping("theaters/{theaterId}/screens/{screenId}")
-    public ResponseEntity<ResponseStructure<ScreenResponse>> findScreenById(@PathVariable String theaterId , @PathVariable String screenId) {
-        ScreenResponse screenResponse = screenService.findScreen(theaterId,screenId);
-        return responseBuilder.sucess(HttpStatus.OK , "Screen has been succesfull fetched",screenResponse);
+    public ResponseEntity<ResponseStructure<ScreenResponse>> findScreenById(@PathVariable String theaterId, @PathVariable String screenId) {
+        ScreenResponse screenResponse = screenService.findScreen(theaterId, screenId);
+        return responseBuilder.sucess(HttpStatus.OK, "Screen has been succesfull fetched", screenResponse);
     }
 }

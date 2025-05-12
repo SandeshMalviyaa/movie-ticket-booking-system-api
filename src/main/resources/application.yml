@@ -4,10 +4,15 @@ Spring:
   application:
     name:movie-ticket-booking-system-api
   datasource:
-    url: jdbc:mysql://localhost:3306/movie-ticket-booking-system-api?createDatabaseIfNotExist=true
-    username: root
-    password: root
+    url: "${MYSQL_URl:jdbc:mysql://localhost:3306/movie-ticket-booking-system-api?createDatabaseIfNotExist=true}"
+    username: "${MYSQL_USERNAME:root}"
+    password: "${MYSQL_PWD:root}"
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+#Internal Configuration
+app:
+  token:
+    secret: "${TOKEN_SECRET:ttQOcGb/maehubZ9hGptxifQvgonTlgo9HBUR2RACWU=}" #only for testing and development mode

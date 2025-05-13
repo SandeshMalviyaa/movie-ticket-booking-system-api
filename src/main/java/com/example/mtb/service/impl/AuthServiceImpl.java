@@ -44,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
 
         com.example.mtb.entity.UserDetails userDetails = userRepository.findByEmail(authentication.getName());
 
-        TokenPayLoad access = tokenGenerator(userDetails, 5, TokenType.ACCESS);
+        TokenPayLoad access = tokenGenerator(userDetails, 60, TokenType.ACCESS);
         TokenPayLoad refresh = tokenGenerator(userDetails, 24 * 60, TokenType.REFRESH);
 
         String accessToken = jwtService.createJwtToken(access);

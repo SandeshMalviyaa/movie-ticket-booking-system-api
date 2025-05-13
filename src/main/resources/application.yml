@@ -16,3 +16,8 @@ Spring:
 app:
   token:
     secret: "${TOKEN_SECRET:ttQOcGb/maehubZ9hGptxifQvgonTlgo9HBUR2RACWU=}" #only for testing and development mode
+
+#Context Path
+server:
+  servlet:
+    context-path: /api/v1
